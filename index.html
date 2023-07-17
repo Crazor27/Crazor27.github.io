@@ -6,5 +6,34 @@
 
 <body>
 
+<p1 id='random_name'> </p1>
+<script> 
+
+ req = new XMLHttpRequest();
+ req.open("GET", 'https://randomuser.me/api/?results=10&inc=name,phone', true);
+ req.send();
+ 
+ req.onreadystatechange = function () {
+	if (req.readyState == 4 && req.status == 200) {
+
+	const obj = JSON.parse(req.responseText);
+	let names = [];
+	let person_data = [];
+	let text = "";
+	for (let i = 0; i < obj.results.length; i++) {
+		let result = obj.results[i];
+		names.push(result.name.first + " " + result.name.last);
+		person_data.push([result.name.first, result.name.last, result.phone]);
+	}
+	
+	for (x in person_data) {
+		text += person_data[x][0] + " " + person_data[x][1] + " " + person_data[x][2] + "<br>";
+	}
+
+	document.getElementById("random_name").innerHTML = text; 
+	}
+ }
+
+</script>
 </body>
 </html>
