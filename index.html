@@ -6,12 +6,22 @@
 
 <body>
 
-<p1 id='random_name'> </p1>
-<script> 
+<p1 id='names'> </p1>
+<table style={{ width: 500 }}>
+                <thead>
+                </thead>
+                <tbody id='table-body'>    
+                </tbody>
+            </table>
 
+<script> 
+/*
  req = new XMLHttpRequest();
  req.open("GET", 'https://randomuser.me/api/?results=10&inc=name,phone', true);
  req.send();
+ 
+ let heading = [];
+ let body = [];
  
  req.onreadystatechange = function () {
 	if (req.readyState == 4 && req.status == 200) {
@@ -27,13 +37,34 @@
 	}
 	
 	for (x in person_data) {
-		text += person_data[x][0] + " " + person_data[x][1] + " " + person_data[x][2] + "<br>";
+		text += person_data[x][0] + " " + person_data[x][1] + " " + "<br>";
 	}
 
-	document.getElementById("random_name").innerHTML = text; 
-	}
+	//document.getElementById("names").innerHTML = text; 
+	heading = ["First Name", "Last Name", "Telephone" ];
+	body = person_data;
+	
+	var tableBody = document.getElementById("table-body");
+
+    // Build the new table
+    for (var i=0; i < body.length; i++) {
+        var newRow = document.createElement("tr");
+        tableBody.appendChild(newRow);
+		var newCell = document.createElement("td");
+		newCell.textContent = body[i][0] + " "  + body[i][1];
+		newRow.appendChild(newCell);
+    }
+	
  }
+}
+*/
+
+
 
 </script>
+
+
+
+
 </body>
 </html>
